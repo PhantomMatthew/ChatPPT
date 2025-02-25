@@ -1,5 +1,5 @@
 from pptx import Presentation
-from logger import LOG
+from utils.logger import LOG
 
 # 删除 PowerPoint 模板中的所有幻灯片
 def remove_all_slides(prs: Presentation):

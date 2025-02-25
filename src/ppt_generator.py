@@ -1,7 +1,7 @@
 import os
 from pptx import Presentation
-from utils import remove_all_slides
-from logger import LOG  # 引入日志模块
+from ppt_tool import remove_all_slides
+from utils.logger import LOG  # 引入日志模块
 
 # 生成 PowerPoint 演示文稿
 def generate_presentation(powerpoint_data, template_path: str, output_path: str):
@@ -59,3 +59,4 @@ def generate_presentation(powerpoint_data, template_path: str, output_path: str)
     # 保存生成的 PowerPoint 文件
     prs.save(output_path)
     LOG.info(f"演示文稿已保存到 '{output_path}'")
+    return output_path

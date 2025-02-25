@@ -4,7 +4,7 @@ from typing import Optional
 from data_structures import PowerPoint
 from slide_builder import SlideBuilder
 from layout_manager import LayoutManager
-from logger import LOG  # 引入日志模块
+from utils.logger import LOG  # 引入日志模块
 
 # 解析输入文本，生成 PowerPoint 数据结构
 def parse_input_text(input_text: str, layout_manager: LayoutManager) -> PowerPoint:
