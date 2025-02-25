@@ -5,7 +5,7 @@ import tempfile
 import os
 import subprocess
 
-from logger import LOG
+from src.logger import LOG
 
 # 模型名称和参数配置
 MODEL_NAME = "openai/whisper-large-v3"  # Whisper 模型名称
