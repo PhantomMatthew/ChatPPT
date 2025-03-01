@@ -26,7 +26,7 @@ class ImageAssistant(ABC):
         Returns:
             dict: Processing results including analysis and recommendations
         """
-        self.url = "http://127.0.0.1:7860/sdapi/v1/txt2img"
+        self.url = "http://127.0.0.1:7861/sdapi/v1/txt2img"
         self.payload = {
             "prompt": prompt,
             "steps": 30,
@@ -41,8 +41,8 @@ class ImageAssistant(ABC):
             data = response.json()
             image_data = base64.b64decode(data["images"][0])  # 图片以 Base64 编码返回
             image = Image.open(BytesIO(image_data))
-            image.save("output.png")
-            print("图片已保存为 output.png")
+            image.save(image_path)
+            print("图片已保存为 images/performance_chart.png")
         else:
             print(f"请求失败: {response.status_code}, {response.text}")
 

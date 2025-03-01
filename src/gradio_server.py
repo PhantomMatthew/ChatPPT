@@ -39,7 +39,9 @@ def generate_contents(message, history):
         text_input = message.get("text")
         if text_input:
             texts.append(text_input)
-
+            LOG.info(f"[文本输入]：{text_input}生成图片")
+            image_assistant.process_image("images/performance_chart.png",text_input)
+            LOG.info(f"[文本输入]：{text_input}生成图片完毕")
         # 获取上传的文件列表，如果存在则处理每个文件
         for uploaded_file in message.get("files", []):
             LOG.info(f"[上传文件]: {uploaded_file}")
