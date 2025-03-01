@@ -5,13 +5,14 @@ from config import Config
 from chatbot import ChatBot
 from content_formatter import ContentFormatter
 from content_assistant import ContentAssistant
+from image_assistant import ImageAssistant
 from input_parser import parse_input_text
 from ppt_generator import generate_presentation
 from template_manager import load_template, get_layout_mapping
 from layout_manager import LayoutManager
 from logger import LOG
 from openai_whisper import asr, transcribe
-from minicpm_v_model import chat_with_image
+# from minicpm_v_model import chat_with_image
 from docx_parser import generate_markdown_from_docx
 
 
@@ -20,7 +21,7 @@ config = Config()
 chatbot = ChatBot(config.chatbot_prompt)
 content_formatter = ContentFormatter(config.content_formatter_prompt)
 content_assistant = ContentAssistant(config.content_assistant_prompt)
-
+image_assistant = ImageAssistant()
 # 加载 PowerPoint 模板，并获取可用布局
 ppt_template = load_template(config.ppt_template)
 
@@ -49,13 +50,13 @@ def generate_contents(message, history):
                 audio_text = asr(uploaded_file)
                 texts.append(audio_text)
             # 解释说明图像文件
-            elif file_ext in ('.jpg', '.png', '.jpeg'):
-                if text_input:
-                    image_desc = chat_with_image(uploaded_file, text_input)
-                else:
-                    image_desc = chat_with_image(uploaded_file)
-                LOG.info(f"[图像解释]：{image_desc}")
-                return image_desc
+            # elif file_ext in ('.jpg', '.png', '.jpeg'):
+            #     if text_input:
+            #         image_desc = chat_with_image(uploaded_file, text_input)
+            #     else:
+            #         image_desc = chat_with_image(uploaded_file)
+            #     LOG.info(f"[图像解释]：{image_desc}")
+            #     return image_desc
             # 使用 Docx 文件作为素材创建 PowerPoint
             elif file_ext in ('.docx', '.doc'):
                 # 调用 generate_markdown_from_docx 函数，获取 markdown 内容

@@ -32,3 +32,6 @@ class Config:
             # 加载内容格式化提示和助手提示
             self.content_formatter_prompt = config.get('content_formatter_prompt', '')
             self.content_assistant_prompt = config.get('content_assistant_prompt', '')
+
+            # 加载图像助手提示
+            self.image_assistant_prompt = config.get('image_assistant_prompt', '')

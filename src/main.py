@@ -8,7 +8,7 @@ from config import Config
 from logger import LOG  # 引入 LOG 模块
 from content_formatter import ContentFormatter
 from content_assistant import ContentAssistant
-
+from image_assistant import ImageAssistant
 # 新增导入 docx_parser 模块中的函数
 from docx_parser import generate_markdown_from_docx
 
@@ -17,7 +17,7 @@ def main(input_file):
     config = Config()  # 加载配置文件
     content_formatter = ContentFormatter()
     content_assistant = ContentAssistant()
-
+    image_assistant = ImageAssistant()
     # 检查输入文件是否存在
     if not os.path.exists(input_file):
         LOG.error(f"{input_file} 不存在。")  # 如果文件不存在，记录错误日志

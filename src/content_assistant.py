@@ -1,7 +1,7 @@
 # content_assistant.py
 from abc import ABC, abstractmethod
 
-from langchain_openai import ChatOpenAI
+from langchain_ollama.chat_models import ChatOllama  # 导入 ChatOllama 模型
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder  # 导入提示模板相关类
 from langchain_core.messages import HumanMessage  # 导入消息类
 from langchain_core.runnables.history import RunnableWithMessageHistory  # 导入带有消息历史的可运行类
@@ -39,10 +39,10 @@ class ContentAssistant(ABC):
             ("human", "{input}"),  # 消息占位符
         ])
 
-        self.model = ChatOpenAI(
-            model="gpt-4o-mini",
+        self.model = ChatOllama(
+            model="qwen2.5:14b",
             temperature=0.5,
-            max_tokens=4096,
+            max_tokens=8192,
         )
 
         self.assistant = system_prompt | self.model  # 使用的模型名称)
